@@ -23,8 +23,8 @@ for message in consumer:
 		print("Data is present at: ",message.value)
         
         # Loading data from HDFS to HBase
-        top10 = destinationDir+"top10/"+(message.value.replace("stockPrice","top10"))
-        bottom10 = destinationDir+"bottom10/"+(message.value.replace("stockPrice","bottom10"))
+        top10 = (message.value.replace("stockPrice","top10"))
+        bottom10 = (message.value.replace("stockPrice","bottom10"))
         os.system("sh ingest-and-analyze-data.sh "+message.value+" "+top10+" "+bottom10)
         
         #Publis to top10 kafka topic
