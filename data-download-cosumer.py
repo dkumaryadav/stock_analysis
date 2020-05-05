@@ -1,6 +1,6 @@
 import os
 from kafka import KafkaConsumer
-
+from kafka import KafkaProducer
 topic = "data-available"
 dataPersistTopic = "data-persisted"
 
