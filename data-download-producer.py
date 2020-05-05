@@ -114,6 +114,8 @@ os.system("hadoop fs -put "+destinationFile+" "+destinationDir)
 
 ## Send data download confirmation message in the queue
 producer.send(topic, key=b"SUCCESS", value=b""+destinationDir+destinationFile)
+producer.flush()
+print("Data ingested to HDFS and notified in kafka")
 
 ## Clean up local FS
-os.system("rm -rf "+destinationFile)   
+os.system("rm -rf "+destinationFile) 
