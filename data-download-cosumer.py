@@ -1,13 +1,12 @@
 import os
 from kafka import KafkaConsumer
 from kafka import KafkaProducer
+
 topic = "data-available"
-dataPersistTopic = "data-persisted"
 
 success_key = b"SUCCESS"
 
-consumer = KafkaConsumer(topic)
-producer = KafkaProducer(bootstrap_servers="localhost:9092")
+consumer = KafkaConsumer(topic, auto_offset_reset='latest',  group_id=None)
 
 for message in consumer:
 	if message.key == success_key:
