@@ -21,7 +21,7 @@ sys.setdefaultencoding('utf8')
 #
 ###############################################################################
 
-API_KEY = "sk_82db9b2864cc4e8ea444d49a1e4c8207"
+API_KEY = "sk_90b2bbb101954dbc8672a90d1349566b"
 destinationFile = "stockPrice_"
 destinationDir = "/user/hadoop/stocks/"
 requestSize = 100
