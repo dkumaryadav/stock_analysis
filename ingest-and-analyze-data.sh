@@ -2,11 +2,21 @@
 ##################################################################
 #Author: Yawei Zhu
 #Date: 05/01/2020
+# $1 : file in data-landing
+# ingestFile = basePath + "/data-landing/" +$1
+# processedFile = basePath + "/processed/" + $2
+# Top10 = basePath + "/top10/" + top10.csv
+# Bottom10 = basePath + "/bottom10/"+ bottom.csv
+#
 ################################################################## 
 
 database="StockMarket"
 table="StockData"
-resultsPath="/home/hadoop/stocks"
+basePath="/home/hadoop/stocks"
+ingestionFile=$basePath"/data-landing/"$1
+processedFile=$basePath"/processed/"
+top10=$basePath"/top10/"
+bottom10=$basePath"/bottom10/"
 
 echo "Creating Database"
 hive -e "CREATE DATABASE IF NOT EXISTS $database;"
