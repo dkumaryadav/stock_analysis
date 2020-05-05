@@ -16,7 +16,6 @@ import sys
 reload(sys)
 sys.setdefaultencoding('utf8')
 ###############################################################################
-#               DO NOT EXECUTE UNTIL ABSOLUTLEY NECESSARY 
 #               
 #               API TOKEN FROM https://iexcloud.io/console
 #
