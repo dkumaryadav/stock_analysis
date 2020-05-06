@@ -28,9 +28,9 @@ echo "Creating External Table"
 hive -e "CREATE EXTERNAL TABLE IF NOT EXISTS $database.$table(stock_symbol STRING, stock_name STRING, stock_price DOUBLE, change DOUBLE, change_percentage DOUBLE, 52WHigh DOUBLE, 52WLow DOUBLE, Time DOUBLE ) ROW FORMAT DELIMITED FIELDS TERMINATED BY ',' LOCATION '$1';"
 
 echo "Finding top 10 and storing as $2 in HDFS"
-hive -e "set hive.cli.print.header=true; SELECT * FROM $database.$table ORDER BY change_percentage DESC LIMIT 10;" | sed 's/[\t]/,/g'  > $2
+hive -e "set hive.cli.print.header=true; SELECT * FROM $database.$table ORDER BY change_percentage DESC LIMIT 10;" | sed 's/[\t]/,\t\t/g'  > $2
 hadoop fs -put $2 $top10
 
 echo "Finding bottom 10 and storing as $3 in HDFS"
-hive -e "set hive.cli.print.header=true; SELECT * FROM $database.$table ORDER BY change_percentage ASC NULLS LAST LIMIT 10;" | sed 's/[\t]/,/g'  > $3
+hive -e "set hive.cli.print.header=true; SELECT * FROM $database.$table ORDER BY change_percentage ASC NULLS LAST LIMIT 10;" | sed 's/[\t]/,\t\t/g'  > $3
 hadoop fs -put $3 $bottom10
