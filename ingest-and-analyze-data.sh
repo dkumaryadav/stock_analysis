@@ -11,7 +11,7 @@
 
 database="StockMarket"
 table="StockData"
-basePath="/user/hadoop/stocks/"
+basePath="/user/hadoop/stocks"
 ingestionFile=$basePath"/data-landing/"
 processedFile=$basePath"/processed/"
 top10=$basePath"/top10/"
@@ -26,6 +26,9 @@ hive -e "CREATE DATABASE IF NOT EXISTS $database;"
 
 echo "Creating External Table"
 hive -e "CREATE EXTERNAL TABLE IF NOT EXISTS $database.$table(stock_symbol STRING, stock_name STRING, stock_price DOUBLE, change DOUBLE, change_percentage DOUBLE, 52WHigh DOUBLE, 52WLow DOUBLE, Time DOUBLE ) ROW FORMAT DELIMITED FIELDS TERMINATED BY ',' LOCATION '$ingestionFile';"
+
+hive -e "LOAD DATA INPATH '$ingestionFile$1' OVERWRITE INTO TABLE $database.$table;"
+
 hadoop fs -mv $ingestionFile$1 $processedFile
 
 echo "Finding top 10 and storing as $2 in HDFS"
