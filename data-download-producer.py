@@ -110,7 +110,7 @@ stockPriceDF.to_csv(destinationFile, index=False)
 
 #
 ## MOVE DATA TO HDFS
-os.system("hadoop fs -put "+destinationFile+" "+destinationDir)
+os.system("hadoop fs -put "+destinationFile+" "+destinationDir+"data-landing/")
 
 ## Send data download confirmation message in the queue
 producer.send(topic, key=b"SUCCESS", value=b""+destinationFile)
