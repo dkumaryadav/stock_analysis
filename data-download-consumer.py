@@ -9,8 +9,8 @@ from kafka import KafkaConsumer
 from kafka import KafkaProducer
 
 topic = "data-available"
-top10Topic = "Top10"
-bottom10Topic = "Bottom10"
+top10Topic = "top10"
+bottom10Topic = "bottom10"
 
 success_key = b"SUCCESS"
 destinationDir = "/user/hadoop/stocks/"
