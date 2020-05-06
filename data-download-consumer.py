@@ -32,3 +32,6 @@ for message in consumer:
         
         #Publish to bottom10 kafka topic
         producer.send(bottom10Topic, key=b"SUCCESS", value=b""+bottom10)
+
+        os.system("rm -rf "+top10)
+        os.system("rm -rf "+bottom10)
